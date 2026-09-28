@@ -38,11 +38,24 @@ function calculateBalance(): number {
     return totalBalance;
 }
 
+function filterTransactions(type: TransactionType): Transaction[] {
+    return transactions.filter(transactions => transactions.type === type);
+}
+
 addTransaction("Salary", 100000000, "income");
 addTransaction("Groceries", 500000, "expense");
 addTransaction("Coffee", 50000, "expense");
+addTransaction("Bonus", 50000000, "income");
 
-console.log("Transaction Lists: ",transactions);
+console.log("--- Daftar Pemasukan (Income) ---");
+const incomeList = filterTransactions("income");
+console.log(incomeList);
 
-const currentBalance = calculateBalance();
-console.log(`Current Balance: Rp ${currentBalance}`);
+console.log("--- Daftar Pengeluaran (Expense) ---");
+const expenseList = filterTransactions("expense");
+console.log(expenseList);
+
+// console.log("Transaction Lists: ",transactions);
+
+// const currentBalance = calculateBalance();
+// console.log(`Current Balance: Rp ${currentBalance}`);
